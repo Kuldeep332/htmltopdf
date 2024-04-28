@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Bill</title>
+<style>
+table {
+	border-collapse: collapse;
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+td, th {
+	border: 1px solid black;
+	padding: 8px;
+}
+
+.sb {
+	width: 80%;
+	text-align: left !important;
+
+}
+
+.separator {
+	border-right: 1px solid black;
+}
+
+#space {
+	margin-left: 30px !important;
+}
+
+.empty-row {
+	height: 6px;
+	border: none;
+}
+</style>
+</head>
+<body>
+	<table style=" color:white;  background-image: url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bmF0dXJlfGVufDB8fDB8fHww')" class="sb">
+		<tr class="row">
+			<td class="separator" id="space">
+			<h4>Seller:</h4>
+				<p >Name: <span th:text="${bill.seller}"></span></p>
+				<p>GSTIN: <span th:text="${bill.sellerGstin}"></span></p>
+				<p>Address: <span th:text="${bill.sellerAddress}"></span></p> <br></td>
+			<td id="space">
+				<h4>Buyer:</h4>
+				<p>Name: <span th:text="${bill.buyer}"></span></p>
+				<p>GSTIN: <span th:text="${bill.buyerGstin}"></span></p>
+				<p>Address: <span th:text="${bill.buyerAddress}"></span></p>
+			</td>
+		</tr>
+	</table>
+
+	<table style=" color:white;  background-image: url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bmF0dXJlfGVufDB8fDB8fHww')">
+		<thead>
+			<tr>
+				<th>Item</th>
+				<th>Quantity</th>
+				<th>Rate</th>
+				<th>Amount</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr style=" background-image: url('https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG5hdHVyZXxlbnwwfHwwfHx8MA%3D%3D')" th:each="item : ${bill.items}">
+				<td th:text="${item.name}"></td>
+				<td th:text="${item.quantity}"></td>
+				<td th:text="${item.rate}"></td>
+				<td th:text="${item.amount}"></td>
+			</tr>
+			<tr class="empty-row">
+				<td colspan="4"><br>
+				<br>
+				<br></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
